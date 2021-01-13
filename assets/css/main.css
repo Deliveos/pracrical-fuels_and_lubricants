@@ -1,0 +1,10 @@
+.err404 {
+  text-align: center;
+}
+.err404 h1 {
+  font-size: 72pt;
+  padding: 0;
+}
+.err404 p {
+  font-size: 18pt;
+}
