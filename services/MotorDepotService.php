@@ -1,6 +1,6 @@
 <?php
-class UserService extends BaseService implements IService {
-  public function save($user) {
+class MotorDepotService extends BaseService implements IService {
+  public function save($motor_depot) {
 
   }
 
@@ -60,5 +60,12 @@ class UserService extends BaseService implements IService {
   public function count() {
     $res = $this->db->query("SELECT COUNT(*) AS cnt FROM user");
     return $res->fetch(PDO::FETCH_OBJ)->cnt;
+  }
+
+  public function arrMotorDepot() {
+    if($res = $this->db->query("SELECT motor_depot_id AS id, address AS value FROM motor_depot")) {
+      return $res->fetchAll(PDO::FETCH_ASSOC);
+    }
+    return false;
   }
 }

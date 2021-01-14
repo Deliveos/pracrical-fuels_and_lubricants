@@ -1,4 +1,4 @@
-<?php //require_once "secure.php";?>
+<?php require_once "secure.php";?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><?=($header)? $header : 'Расписание занятий колледжа';?></title>
+  <title><?=($header)? $header : 'Учет ГСМ';?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -21,7 +21,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <link rel="stylesheet" href="assets/css/skins/skin-blue.min.css">
   <link rel="stylesheet" href="assets/css/main.css">
-  
 
   <!-- Google Font -->
   <link rel="stylesheet"
@@ -37,9 +36,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Logo -->
     <a href="index.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>Р</b></span>
+      <span class="logo-mini"><b>ГСМ</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Расписание</b></span>
+      <span class="logo-lg"><b>Учет ГСМ</b></span>
     </a>
 
     <!-- Header Navbar -->
@@ -54,29 +53,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Messages: style can be found in dropdown.less-->
           <li class="dropdown messages-menu">
             <!-- Menu toggle button -->
-            <ul class="dropdown-menu">
-              <li class="header">You have 4 messages</li>
-              <li>
-                <!-- inner menu: contains the messages -->
-                <ul class="menu">
-                  <li><!-- start message -->
-                    <a href="#">
-                      <div class="pull-left">
-                      <!-- Message title and timestamp -->
-                      <h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                      </h4>
-                      <!-- The message -->
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <!-- end message -->
-                </ul>
-                <!-- /.menu -->
-              </li>
-              <li class="footer"><a href="#">See All Messages</a></li>
-            </ul>
+            
           </li>
           <!-- /.messages-menu -->
 
@@ -144,7 +121,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li class="user-header">
                 <p>
                 <?= $_SESSION["fio"] ?>
-                  <small><?= $_SESSION["roleName"] ?></small>
+                  <small><?= $_SESSION["position"] ?></small>
                 </p>
               </li>
               <!-- Menu Footer-->

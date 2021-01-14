@@ -7,53 +7,55 @@ if (isset($_GET['page'])) {
 } else {
   $page = 1;
 }
-$userService = new UserService();
-$count = $userService->count();
-$users = $userService->findAll($page*$size-$size, $size);
-print_r($user);
-$header = 'Список пользователей';
+$refuellerService = new RefuellerService();
+$count = $refuellerService->count();
+$refuellers = $refuellerService->findAll($page*$size-$size, $size);
+$header = 'Список заправщиков';
 require_once 'template/header.php';
 ?>
 <div class="row">
   <div class="col-xs-12">
     <div class="box">
       <section class="content-header">
-        <h1>Список пользователей</h1>
+        <h1>Список Заправщиков</h1>
         <ol class="breadcrumb">
           <li><a href="/index.php"><i class="fa fa-dashboard"></i> Главная</a></li>
-          <li class="active">Список пользователей</li>
+          <li class="active">Список Заправщиков</li>
         </ol>
       </section>
       <div class="box-body">
-        <a class="btn btn-success" href="add-user.php">Добавить пользователя</a>
+        <a class="btn btn-success" href="add-refueller.php">Добавить Заправщика</a>
       </div>
       <!-- /.box-header -->
       <div class="box-body">
         <?php
-        if ($users) { ?>
+        if ($refuellers) { ?>
         <table id="example2" class="table table-bordered table-hover">
           <thead>
             <tr>
               <th>Ф.И.О</th>
               <th>Дата рождения</th>
-              <th>Должность</th>
+              <th>Автобаза</th>
+              <th>Номер гаража</th>
             </tr>
           </thead>
           <tbody>
           <?php
-          foreach ($users as $user) {
+          foreach ($refuellers as $refueller) {
           echo '<tr>';
-          echo '<td><a href="profile-user.php?id='.$user->user_id.'">'.$user->fio.'</a> '
-          . '<a href="add-user.php?id='.$user->user_id.'"><i class="fa fa-pencil"></i></a></td>';
-          echo '<td>'.$user->birthday.'</td>';
-          echo '<td>'.$user->position.'</td>';
+          echo '<td><a href="profile-refueller.php?id='.$refueller->user_id.'">'.$refueller->fio.'</a> '
+          . '<a href="add-refueller.php?id='.$refueller->user_id.'"><i class="fa fa-pencil"></i></a></td>';
+          echo '<td>'.$refueller->birthday.'</td>';
+          echo '<td>'.$refueller->motor_depot.'</td>';
+          echo '<td>'.$refueller->garage.'</td>';
+          echo '<td><a href="delete-refueller.php?id='.$refueller->user_id.'"><i class="fa fa-trash"></i></a></td>';
           echo '</tr>';
           }
           ?>
           </tbody>
         </table>
         <?php } else {
-        echo 'Ни одного пользователя не найдено';
+        echo 'Ни одного заправщика не найдено';
         } ?>
       </div>
       <div class="box-body">

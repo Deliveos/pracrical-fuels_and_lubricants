@@ -22,7 +22,7 @@ require_once 'template/header.php';
   </ol>
 </section>
 <div class="box-body">
-  <form action="save-employee.php" method="POST">
+  <form action="save-user.php" method="POST">
     <?php require_once '_formUser.php'; ?>
       <input type="hidden" name="role_id" value="3">
     <div class="form-group">

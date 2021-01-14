@@ -35,7 +35,7 @@ class PositionService extends BaseService implements IService {
 
   public function arrPosition() {
     if($res = $this->db->query("SELECT position_id AS id, name AS value FROM position")) {
-      return $res->fetch(PDO::FETCH_ASSOC);
+      return $res->fetchAll(PDO::FETCH_ASSOC);
     }
     return false;
   }

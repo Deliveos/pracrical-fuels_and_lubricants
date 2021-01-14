@@ -9,35 +9,31 @@ $id = 0;
 if (isset($_GET['id'])) {
 $id = Helper::clearInt($_GET['id']);
 }
-$employee = (new EmployeeService())->findById($id);
-$header = (($id)?'Редактировать данные':'Добавить').' сотрудника';
+$refueller = (new RefuellerService())->findById($id);
+$header = (($id)?'Редактировать данные':'Добавить').' заправщика';
 require_once 'template/header.php';
 ?>
 <section class="content-header">
   <h1><?=$header;?></h1>
   <ol class="breadcrumb">
     <li><a href="/index.php"><i class="fa fa-dashboard"></i> Главная</a></li>
-    <li><a href="list-user.php">Сотрудники</a></li>
+    <li><a href="list-refueller.php">Заправщики</a></li>
     <li class="active"><?=$header;?></li>
   </ol>
 </section>
 <div class="box-body">
-  <form action="save-employee.php" method="POST">
+  <form action="save-refueller.php" method="POST">
     <?php require_once '_formUser.php'; ?>
-      <input type="hidden" name="role_id" value="3">
+      <input type="hidden" name="role_id" value="1">
     <div class="form-group">
-      <label>Должность</label>
-      <select class="form-control" name="position_id">
-        <?= Helper::printSelectOptions($employee->position_id, (new PositionService())->arrPosition());?>
+      <label>Автобаза</label>
+      <select class="form-control" name="motor_depot_id">
+        <?= Helper::printSelectOptions($refueller->motor_depot_id, (new MotorDepotService())->arrMotorDepot());?>
       </select>
     </div>
     <div class="form-group">
-      <label>Логин</label>
-      <input type="text" class="form-control" name="login" required="required" value="<?=$user->login;?>">
-    </div>
-    <div class="form-group">
-      <label>Пароль</label>
-      <input type="password" class="form-control" name="password" required="required">
+      <label>Номер гаража</label>
+      <input type="number" min="0" class="form-control" name="garage_num" value="<?= (new GarageService)->findByNumAndMotorDepot($refueller->garage_id, $refueller->motor_depot_id);?>">
     </div>
     <div class="form-group">
       <label>Заблокировать</label>
