@@ -45,7 +45,7 @@ require_once 'template/header.php';
           echo '<td><a href="profile-manager.php?id='.$user->user_id.'">'.$user->fio.'</a> '
           . '<a href="add-manager.php?id='.$user->user_id.'"><i class="fa fa-pencil"></i></a></td>';
           echo '<td>'.$user->birthday.'</td>';
-          echo '<td><a href="delete-employee.php?id='.$employee->user_id.'"><i class="fa fa-trash"></i></a></td>';
+          echo '<td><a href="delete-manager.php?id='.$user->user_id.'"><i class="fa fa-trash"></i></a></td>';
           echo '</tr>';
           }
           ?>

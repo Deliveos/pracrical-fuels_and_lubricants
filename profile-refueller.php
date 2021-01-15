@@ -16,12 +16,12 @@ require_once 'template/header.php';
         <h1>Профиль заправщика</h1>
         <ol class="breadcrumb">
           <li><a href="index.php"><i class="fa fa-dashboard"></i> Главная</a></li>
-          <li><a href="list-employee.php">Заправщики</a></li>
+          <li><a href="list-refueller.php">Заправщики</a></li>
           <li class="active">Профиль</li>
         </ol>
       </section>
       <div class="box-body">
-        <a class="btn btn-success" href="add-employee.php?id=<?=$id;?>">Изменить</a>
+        <a class="btn btn-success" href="add-refueller.php?id=<?=$id;?>">Изменить</a>
       </div>
       <div class="box-body">
         <table class="table table-bordered table-hover">

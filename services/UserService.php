@@ -1,11 +1,18 @@
 <?php
 class UserService extends BaseService implements IService {
   public function save($user) {
-
+    if ($user->validate()) {
+      if ($user->user_id == 0) {
+          return $this->insert($user);
+      } else {
+        return $this->update($user);
+      }
+    }
+    return false;
   }
 
   public function delete($id) {
-    if ($this->db->exec("DELETE FROM schedule WHERE schedule_id=$id") == 1) {
+    if ($this->db->exec("DELETE FROM user WHERE user_id=$id") == 1) {
       return true;
     }
     return false;
@@ -15,6 +22,14 @@ class UserService extends BaseService implements IService {
     $id = Helper::clearInt($id);
     if($res = $this->db->query("SELECT user.user_id, user.surename, user.name, user.patronymic, user.birthday
     FROM user WHERE user.user_id=$id")) {
+      return $res->fetch(PDO::FETCH_OBJ);
+    }
+    return false;
+  }
+
+  public function findLast() {
+    if($res = $this->db->query("SELECT user.user_id, user.surename, user.name, user.patronymic, user.birthday
+    FROM user WHERE user.user_id=(SELECT max(user_id) FROM user)")) {
       return $res->fetch(PDO::FETCH_OBJ);
     }
     return false;
@@ -60,5 +75,28 @@ class UserService extends BaseService implements IService {
   public function count() {
     $res = $this->db->query("SELECT COUNT(*) AS cnt FROM user");
     return $res->fetch(PDO::FETCH_OBJ)->cnt;
+  }
+
+  private function insert(User $user) {
+    $name = $this->db->quote($user->name);
+    $surename = $this->db->quote($user->surename);
+    $patronymic = $this->db->quote($user->patronymic);
+    $birthday = $this->db->quote($user->birthday);
+    if ($this->db->exec("INSERT INTO user(user_id, surename, name, patronymic, birthday, role_id) 
+    VALUES($user->user_id, $surename, $name, $patronymic, $birthday, $user->role_id)") == 1) {
+      return true;
+    }
+    return false;
+  }
+
+  private function update(User $user) {
+    $name = $this->db->quote($user->name);
+    $surename = $this->db->quote($user->surename);
+    $patronymic = $this->db->quote($user->patronymic);
+    $birthday = $this->db->quote($user->birthday);
+    if ($this->db->exec("UPDATE user SET user.name=$name, surename=$surename, patronymic=$patronymic, birthday=$birthday WHERE user_id=$user->user_id") == 1) {
+      return true;
+    }
+    return false;
   }
 }

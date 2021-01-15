@@ -6,7 +6,7 @@ class Manager implements IEssence {
   public $password;
   
   public function validate() {
-    if (!empty($this->employee_id) && !empty($this->manager_id) && !empty($this->login) && !empty($this->password)) {
+    if (!empty($this->login) && !empty($this->password)) {
       return true;
     } else {
       return false;

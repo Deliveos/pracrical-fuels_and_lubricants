@@ -10,32 +10,21 @@ if (isset($_GET['id'])) {
 $id = Helper::clearInt($_GET['id']);
 }
 $manager = (new ManagerService())->findById($id);
-$header = (($id)?'Редактировать данные':'Добавить').' менеджера';
+$header = (($id)?'Редактировать данные':'Добавить').' водителя';
 require_once 'template/header.php';
 ?>
 <section class="content-header">
   <h1><?=$header;?></h1>
   <ol class="breadcrumb">
     <li><a href="/index.php"><i class="fa fa-dashboard"></i> Главная</a></li>
-    <li><a href="list-user.php">Менеджеры</a></li>
+    <li><a href="list-driver.php">Водители</a></li>
     <li class="active"><?=$header;?></li>
   </ol>
 </section>
 <div class="box-body">
-  <form action="save-manager.php" method="POST">
+  <form action="save-driver.php" method="POST">
     <?php require_once '_formUser.php'; ?>
-      <input type="hidden" name="role_id" value="1">
-      <input type="hidden" name="position_id" value="2"> 
-      <input type="hidden" name="manager_id" value="<?= $manager->manager_id; ?>"> 
-      <input type="hidden" name="employee_id" value="<?= $manager->employee_id; ?>"> 
-    <div class="form-group">
-      <label>Логин</label>
-      <input type="text" class="form-control" name="login" required="required" value="<?=$manager->login;?>">
-    </div>
-    <div class="form-group">
-      <label>Пароль</label>
-      <input type="password" class="form-control" name="password" required="required">
-    </div>
+      <input type="hidden" name="role_id" value="2">
     <div class="form-group">
       <label>Заблокировать</label>
       <div class="radio">
@@ -48,7 +37,7 @@ require_once 'template/header.php';
       </div>
     </div>
     <div class="form-group">
-      <button type="submit" name="saveManager" class="btn btn-primary">Сохранить</button>
+      <button type="submit" name="saveDriver" class="btn btn-primary">Сохранить</button>
     </div>
   </form>
 </div>

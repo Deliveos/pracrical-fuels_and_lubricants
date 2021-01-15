@@ -10,21 +10,21 @@ if (isset($_GET['page'])) {
 $driverService = new DriverService();
 $count = $driverService->count();
 $drivers = $driverService->findAll($page*$size-$size, $size);
-$header = 'Список сотрудников';
+$header = 'Список водителей';
 require_once 'template/header.php';
 ?>
 <div class="row">
   <div class="col-xs-12">
     <div class="box">
       <section class="content-header">
-        <h1>Список сотрудников</h1>
+        <h1>Список водителей</h1>
         <ol class="breadcrumb">
           <li><a href="/index.php"><i class="fa fa-dashboard"></i> Главная</a></li>
-          <li class="active">Список сотрудников</li>
+          <li class="active">Список водителей</li>
         </ol>
       </section>
       <div class="box-body">
-        <a class="btn btn-success" href="add-driver.php">Добавить сотрудника</a>
+        <a class="btn btn-success" href="add-driver.php">Добавить водителя</a>
       </div>
       <!-- /.box-header -->
       <div class="box-body">

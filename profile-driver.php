@@ -21,7 +21,7 @@ require_once 'template/header.php';
         </ol>
       </section>
       <div class="box-body">
-        <a class="btn btn-success" href="add-employee.php?id=<?=$id;?>">Изменить</a>
+        <a class="btn btn-success" href="add-driver.php?id=<?=$id;?>">Изменить</a>
       </div>
       <div class="box-body">
         <table class="table table-bordered table-hover">

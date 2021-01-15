@@ -50,8 +50,8 @@ class GarageService extends BaseService implements IService {
     return false;
   }
 
-  public function findByNumAndMotorDepot($garage_num, $motor_depot_id) {
-    if($res = $this->db->query("SELECT garage_id AS id, num AS value FROM garage WHERE garage_num=$garage_num AND motor_depot_id=$motor_depot_id")) {
+  public function findByMotorDepotId($motor_depot_id) {
+    if($res = $this->db->query("SELECT garage_id AS id, num AS value FROM garage WHERE motor_depot_id=$motor_depot_id")) {
       return $res->fetchAll(PDO::FETCH_ASSOC);
     }
     return false;
