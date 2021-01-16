@@ -17,14 +17,14 @@ require_once 'template/header.php';
   <div class="col-xs-12">
     <div class="box">
       <section class="content-header">
-        <h1>Список Заправщиков</h1>
+        <h1>Список заправщиков</h1>
         <ol class="breadcrumb">
           <li><a href="/index.php"><i class="fa fa-dashboard"></i> Главная</a></li>
-          <li class="active">Список Заправщиков</li>
+          <li class="active">Список заправщиков</li>
         </ol>
       </section>
       <div class="box-body">
-        <a class="btn btn-success" href="add-refueller.php">Добавить Заправщика</a>
+        <a class="btn btn-success" href="add-refueller.php">Добавить заправщика</a>
       </div>
       <!-- /.box-header -->
       <div class="box-body">

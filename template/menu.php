@@ -20,21 +20,22 @@
         </li>
       <li class="header">Ведомости</li>
         <li 
-          <?=($_SERVER['PHP_SELF']=='/list-teacher.php')?'class="active"':'';?>>
-          <a href="list-teacher.php"><i class="fa fa-table"></i><span>Ведомости</span></a>
+          <?=($_SERVER['PHP_SELF']=='/list-bill.php')?'class="active"':'';?>>
+          <a href="list-bill.php"><i class="fa fa-table"></i><span>Ведомости</span></a>
         </li>
+      <li class="header">ГСМ</li>
         <li 
-          <?=($_SERVER['PHP_SELF']=='/list-teacher.php')?'class="active"':'';?>>
-          <a href="list-teacher.php"><i class="fa fa-book"></i><span>ГСМ</span></a>
+          <?=($_SERVER['PHP_SELF']=='/list-fal.php')?'class="active"':'';?>>
+          <a href="list-fal.php"><i class="fa fa-book"></i><span>ГСМ</span></a>
         </li>
       <li class="header">Транспорт</li>
         <li 
-          <?=($_SERVER['PHP_SELF']=='/list-teacher.php')?'class="active"':'';?>>
-          <a href="list-teacher.php"><i class="fa fa-car"></i><span>Транспорт</span></a>
+          <?=($_SERVER['PHP_SELF']=='/list-car.php')?'class="active"':'';?>>
+          <a href="list-car.php"><i class="fa fa-car"></i><span>Транспорт</span></a>
         </li>
         <li 
-          <?=($_SERVER['PHP_SELF']=='/list-teacher.php')?'class="active"':'';?>>
-          <a href="list-teacher.php"><i class="fa fa-car"></i><span>Марки автомобилей</span></a>
+          <?=($_SERVER['PHP_SELF']=='/list-car-model.php')?'class="active"':'';?>>
+          <a href="list-car-model.php"><i class="fa fa-car"></i><span>Модели транспорта</span></a>
         </li>
     </ul>
   </section>
