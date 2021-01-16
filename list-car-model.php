@@ -1,5 +1,5 @@
 <?php
-//require_once 'secure.php';
+require_once 'secure.php';
 require_once "autoload.php";
 $size = 20;
 if (isset($_GET['page'])) {

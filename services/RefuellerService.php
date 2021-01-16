@@ -45,6 +45,16 @@ class RefuellerService extends BaseService implements IService {
     return false;
   }
 
+  public function findByMotorDepotId($id) {
+    if($res = $this->db->query("SELECT refueller.refueller_id AS id, CONCAT(user.surename, ' ', user.name, ' ', user.patronymic) AS value FROM refueller
+    INNER JOIN employee ON refueller.employee_id=employee.employee_id 
+    INNER JOIN user ON user.user_id=employee.user_id 
+    WHERE refueller.motor_depot_id=$id")) {
+      return $res->fetchAll(PDO::FETCH_ASSOC);
+    }
+    return false;
+  }
+
   public function count() {
     $res = $this->db->query("SELECT COUNT(*) AS cnt FROM employee");
     return $res->fetch(PDO::FETCH_OBJ)->cnt;

@@ -1,9 +1,5 @@
 <?php
 require_once 'secure.php';
-// if (!Helper::can('admin') && !Helper::can('manager')) {
-//   header('Location: 404.php');
-//   exit();
-// }
 require_once "autoload.php";
 $id = 0;
 if (isset($_GET['id'])) {
