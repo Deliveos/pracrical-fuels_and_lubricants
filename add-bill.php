@@ -5,17 +5,16 @@ $id = 0;
 if (isset($_GET['id'])) {
 $id = Helper::clearInt($_GET['id']);
 }
+$bill = (new BillService())->findById($id);
+$bill_positions = (new BillPositionService)->findByBillId($id);
 $motor_depot_id = 0;
-if (!$refueller->motor_depot_id === 0) {
-  $motor_depot_id = $refueller->motor_depot_id;
+if (!empty($bill->motor_depot_id)) {
+  $motor_depot_id = $bill->motor_depot_id;
 } elseif (isset($_POST["motor_depot_id"])) {
   $motor_depot_id = Helper::clearInt($_POST["motor_depot_id"]);
 } else {
   $motor_depot_id = 1;
 }
-
-$bill = (new BillService())->findById($id);
-$bill_positions = (new BillPositionService)->findByBillId($id);
 $header = (($id)?'Редактировать':'Добавить').' ведомость';
 require_once 'template/header.php';
 ?>
@@ -46,17 +45,17 @@ require_once 'template/header.php';
     </div>
     <div class="form-group">
       <label>Заправщик</label>
-      <select class="form-control" name="car_model_id">
+      <select class="form-control" name="refueller_id">
         <?= Helper::printSelectOptions($bill->refueller_id, (new RefuellerService)->findByMotorDepotId($motor_depot_id)); ?>
       </select>
     </div>
     <div class="form-group">
       <label>Номер ведомости</label>
-      <input type="text" class="form-control" name="bill_num" value="<?= $car->state_num;?>">
+      <input type="text" class="form-control" name="bill_num" value="<?= $bill->bill_num;?>">
     </div>
     <div class="form-group">
       <label>Дата</label>
-      <input type="date" class="form-control" name="birthday" value="<?=$user->birthday;?>">
+      <input type="date" class="form-control" name="date" value="<?=$bill->date;?>">
     </div>
     <input type="hidden" name="bill_id" value="<?= $id; ?>">
     <input type="hidden" name="motor_depot_id" value="<?= $motor_depot_id; ?>">
@@ -69,6 +68,8 @@ require_once 'template/header.php';
               <th>Водитель</th>
               <th>Гос.номер авто</th>
               <th>Номер путевого листа</th>
+              <th>ГСМ</th>
+              <th>Количество</th>
             </tr>
           </thead>
           <tbody>
@@ -78,8 +79,10 @@ require_once 'template/header.php';
             echo '<td>'.$bill_position->fio.'</td>';
             echo '<td>'.$bill_position->state_num.'</td>';
             echo '<td>'.$bill_position->waybill_num.'</td>';
-            echo '<td><a href="add-bill-position.php?id='.$bill->bill_id.'"><i class="fa fa-pencil"></i></a></td>';
-            echo '<td><a href="delete-bill-position.php?id='.$bill->bill_id.'"><i class="fa fa-trash"></i></a></td>';
+            echo '<td>'.$bill_position->fal.'</td>';
+            echo '<td>'.$bill_position->count.'</td>';
+            echo '<td><a href="add-bill-position.php?bill_id='.$bill->bill_id.'&bill_position_id='.$bill_position->bill_position_id.'"><i class="fa fa-pencil"></i></a></td>';
+            echo '<td><a href="delete-bill-position.php?bill_id='.$bill->bill_id.'&bill_position_id='.$bill_position->bill_position_id.'"><i class="fa fa-trash"></i></a></td>';
             echo '</tr>';
           }
           ?>

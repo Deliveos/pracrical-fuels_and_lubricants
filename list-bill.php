@@ -50,7 +50,6 @@ require_once 'template/header.php';
             echo '<td>'.$bill->motor_depot.'</td>';
             echo '<td>'.$bill->garage_num.'</td>';
             echo '<td><a href="add-bill.php?id='.$bill->bill_id.'"><i class="fa fa-pencil"></i></a></td>';
-            echo '<td><a href="delete-bill.php?id='.$bill->bill_id.'"><i class="fa fa-trash"></i></a></td>';
             echo '</tr>';
           }
           ?>

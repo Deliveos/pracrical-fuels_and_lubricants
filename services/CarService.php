@@ -44,6 +44,13 @@ class CarService  extends BaseService implements IService {
     return false;
   }
 
+  public function arrCar() {
+    if($res = $this->db->query("SELECT car_id AS id, state_num AS value FROM car")) {
+      return $res->fetchAll(PDO::FETCH_ASSOC);
+    }
+    return false;
+  }
+
   public function count() {
     $res = $this->db->query("SELECT COUNT(*) AS cnt FROM car");
     return $res->fetch(PDO::FETCH_OBJ)->cnt;

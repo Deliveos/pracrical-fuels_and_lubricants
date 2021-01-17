@@ -5,7 +5,7 @@ class DriverService  extends BaseService implements IService {
   }
 
   public function delete($id) {
-    if($this->db->exec("DELETE FROM employee WHERE user_id=$id")) {
+    if($this->db->exec("DELETE FROM user WHERE user_id=$id")) {
       return true;
     }
     return false;
@@ -19,6 +19,13 @@ class DriverService  extends BaseService implements IService {
     return false;
   }
 
+  public function arrDriver() {
+    if($res = $this->db->query("SELECT user_id AS id, CONCAT(user.surename, ' ', user.name, ' ', user.patronymic) AS value FROM user WHERE role_id=2")) {
+      return $res->fetchAll(PDO::FETCH_ASSOC);
+    }
+    return false;
+  }
+  
   public function findAll($ofset = 0, $limit = 20) {
     if($res = $this->db->query("SELECT user.user_id, CONCAT(user.surename, ' ', user.name, ' ', user.patronymic) AS fio, user.birthday FROM user
     WHERE role_id=2 LIMIT $ofset, $limit")) {

@@ -2,7 +2,7 @@
 class BillService  extends BaseService implements IService {
   public function save($bill) {
     if ($bill->validate()) {
-      if ($bill->car_id === 0) {
+      if ($bill->bill_id === 0) {
           return $this->insert($bill);
       } else {
         return $this->update($bill);
@@ -68,16 +68,18 @@ class BillService  extends BaseService implements IService {
   }
 
   private function insert(Bill $bill) {
+    $date = $this->db->quote($bill->date);
     if ($this->db->exec("INSERT INTO bill(bill_id,	motor_depot_id,	bill_num,	date,	refueller_id) 
-    VALUES($bill->bill_id, $bill->motor_depot_id, $bill->bill_num, $bill->date, $bill->refueller_id)") == 1) {
+    VALUES($bill->bill_id, $bill->motor_depot_id, $bill->bill_num, $date, $bill->refueller_id)") == 1) {
       return true;
     }
     return false;
   }
 
   private function update(Bill $bill) {
+    $date = $this->db->quote($bill->date);
     if ($this->db->exec("UPDATE bill SET motor_depot_id=$bill->motor_depot_id, bill_num=$bill->bill_num, 
-    date=$bill->date, refueller_id=$bill->refueller_id WHERE bill_id=".$bill->bill_id) == 1) {
+    date=$date, refueller_id=$bill->refueller_id WHERE bill_id=".$bill->bill_id) == 1) {
       return true;
     }
     return false;

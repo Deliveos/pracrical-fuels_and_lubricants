@@ -8,7 +8,7 @@ class Bill implements IEssence {
   public $refueller_id;
 
   public function validate() {
-    if (isset($this->bill_id) && isset($this->motor_depot_id) && isset($this->refueller_id) && !empty($this->bill_num) && !empty($this->date)) {
+    if (isset($this->bill_id) && isset($this->motor_depot_id) && isset($this->refueller_id)) {
       return true;
     } else {
       return false;
